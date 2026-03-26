@@ -113,8 +113,10 @@ class LoginPage:
         # Configure: PSM 7 = treat image as a single text line (good for captchas)
         custom_config = r"--oem 3 --psm 7"
 
-        if os.path.isdir(TESSDATA_DIR):
-            pytesseract.pytesseract.tesseract_cmd = _find_tesseract()
+        # if os.path.isdir(TESSDATA_DIR):
+        #     pytesseract.pytesseract.tesseract_cmd = _find_tesseract()
+
+        pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
         image = Image.open(dest_path)
         captcha_text: str = pytesseract.image_to_string(image, config=custom_config)
